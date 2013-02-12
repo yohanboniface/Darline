@@ -1,0 +1,16 @@
+a {
+    color: SeaGreen;
+}
+.button, input[type="submit"] {
+    background-color: SeaGreen;
+}
+.button:hover, input[type="submit"]:hover {
+    background-color: MediumSeaGreen;
+}
+.warning {
+    color: #cc0000;
+}
+.tintbox.warning {
+    background-color: #cc0000;
+    color: #fff;
+}

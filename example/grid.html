@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Darline grid example</title>
+        <link rel="stylesheet" type="text/css" href="../src/css/core.css">
+        <link rel="stylesheet" type="text/css" href="../src/css/grid.css">
+        <link rel="stylesheet" type="text/css" href="../src/css/form.css">
+        <link rel="stylesheet" type="text/css" href="../src/css/color/seagreen.css">
+        <link rel="stylesheet" type="text/css" href="../src/css/debug.css">
+        <script src="../src/js/core.js"></script>
+        <script src="../src/js/debug.js"></script>
+    </head>
+    <body>
+        <div class="col _35 c30_hide tintbox">We are in 35 cols mode.</div>
+        <div class="col c30_show c25_hide c30_wide tintbox">We are in 30 cols mode.</div>
+        <div class="col c25_show c20_hide c25_wide tintbox">We are in 25 cols mode.</div>
+        <div class="col c20_show c20_wide c17_hide tintbox">We are in 20 cols mode.</div>
+        <div class="col c17_show c17_wide tintbox">We are in 17 cols mode.</div>
+        <div class="col _35 tintbox">I'm a wide div. I will just fit the max width.</div>
+        <div class="col _35">
+            <div class="col _17 c30_12 c20_wide tintbox" style="background-color: Chocolate;">I'm a half wide div in 35 cols mode. but I will reduce to 12 cols in 30 cols mode And go wide in 20 cols mode.</div>
+            <div class="col _17 c25_12 c20_wide tintbox" style="background-color: SeaGreen;">I'm a half wide div in 35 cols mode. I will reduce in 25 cols mode. And go wide in 20 cols mode.</div>
+        </div>
+        <div class="col _35 tintbox">I'm a wide div. I will just fit the max width.</div>
+        <div class="col _35">
+            <div class="col _11 c30_18 c25_wide tintbox"  style="background-color: DarkRed;">I'm a 11 cols div in 35 cols mode. Half div in 30 cols. Wide div from 20 cols down.</div>
+            <div class="col _11 c25_hide tintbox" style="background-color: Brown;">I'm a 11 cols div in 35 cols mode. Half div in 30 cols. I disappear at 25 cols mode.</div>
+            <div class="col _11 c30_wide tintbox" style="background-color: Chocolate;">I'm a 11 cols div in 35 cols mode. Wide div from 30 cols down.</div>
+        </div>
+        <div class="col c17_show c17_wide tintbox" style="background-color: GoldenRod;">I'm visible only in 17 cols.</div>
+        <script type="text/javascript">
+            D.Toolbox();
+        </script>
+    </body>
+</html>
