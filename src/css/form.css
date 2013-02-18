@@ -69,3 +69,14 @@ label {
     line-height: 21px;
     width: 100%;
 }
+input + .error {
+    display: block;
+    padding: 7px 7px;
+    margin-top: -14px;
+    margin-bottom: 14px;
+    background: #ddd;
+    color: #fff;
+    background-color: #cc0000;
+    font-size: 11px;
+    border-radius: 0 2px;
+}
