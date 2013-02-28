@@ -17,7 +17,8 @@ body {
     margin-left: 28px;
 }
 
-.by2 > .col:nth-child(2n+0),
+.by2 > .col:nth-child(2n+1),
+.by2 > .part:nth-child(2n+1),
 .pile + .pile {
     margin-left: 0;
 }
@@ -64,6 +65,10 @@ body {
 
 .wide {
     width: 100%;
+}
+
+._35 + .col {
+    margin-left: 0;
 }
 
 ._35, ._35 + ._35 {
