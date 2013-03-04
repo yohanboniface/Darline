@@ -17,12 +17,6 @@ body {
     margin-left: 28px;
 }
 
-.by2 > .col:nth-child(2n+1),
-.by2 > .part:nth-child(2n+1),
-.pile + .pile {
-    margin-left: 0;
-}
-
 ._35 { width:980px; }
 ._34 { width:952px; }
 ._33 { width:924px; }
@@ -67,8 +61,18 @@ body {
     width: 100%;
 }
 
-._35 + .col {
+.col + .wide,
+.by2 > .col:nth-child(2n+1),
+.by2 > .part:nth-child(2n+1),
+.by3 > .part:nth-child(3n+1),
+.pile + .pile,
+._35 + .col,
+._23 > ._23 {
     margin-left: 0;
+}
+
+.pile {
+    margin-right: 28px;
 }
 
 ._35, ._35 + ._35 {
