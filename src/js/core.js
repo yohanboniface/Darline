@@ -6,6 +6,21 @@ D.Util = {
         return function () {
             return fn.apply(obj, args || arguments);
         };
+    },
+
+    extend: function (dest) { // From Leaflet
+        var sources = Array.prototype.slice.call(arguments, 1),
+            i, j, len, src;
+
+        for (j = 0, len = sources.length; j < len; j++) {
+            src = sources[j] || {};
+            for (i in src) {
+                if (src.hasOwnProperty(i)) {
+                    dest[i] = src[i];
+                }
+            }
+        }
+        return dest;
     }
 };
 
@@ -114,7 +129,8 @@ D.Event = {
         if (el instanceof NodeList) {
             return D.DOM.forEach(el, function (item) { D.Event.on(item, type, fn, thisobj); });
         }
-        return el.addEventListener(type, D.Util.bind(fn, thisobj || el));
+        el.addEventListener(type, D.Util.bind(fn, thisobj || el));
+        return this;
     },
 
     stop: function (e) {
@@ -131,7 +147,7 @@ D.Xhr = {
             'responseType': "text",
             'data': null
         };
-        settings = L.Util.extend({}, default_options, options);
+        settings = D.Util.extend({}, default_options, options);
 
         var xhr = new XMLHttpRequest();
         xhr.open(verb, uri, settings.async);
@@ -158,5 +174,30 @@ D.Xhr = {
 
     post: function(uri, options) {
         D.Xhr._ajax("POST", uri, options);
+    },
+
+    submit_form: function(form_id, options) {
+        if(typeof options == "undefined") {
+            options = {};
+        }
+        var form = D.DOM.get(form_id);
+        var formData = new FormData(form);
+        if(options.extraFormData) {
+            formData.append(options.extraFormData);
+        }
+        options.data = formData;
+        D.Xhr.post(form.action, options);
+        return false;
+    },
+
+    listen_form: function (form_id, options) {
+        var form = D.DOM.get(form_id);
+        if (!form) {
+            return;
+        }
+        D.Event.on(form, 'submit', D.Event.stop);
+        D.Event.on(form, 'submit', function (e) {
+                D.Xhr.submit_form(form_id, options);
+            });
     }
 };
