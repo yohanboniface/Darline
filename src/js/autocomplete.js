@@ -51,6 +51,7 @@ D.autoComplete = function (el, options) {
             D.DOM.insertBefore(this.el, this.input);
             D.Event.on(this.input, "keydown", this.onKeyDown, this);
             D.Event.on(this.input, "keyup", this.onKeyUp, this);
+            D.Event.on(this.input, "blur", this.onBlur, this);
         },
 
         createContainer: function () {
@@ -131,6 +132,13 @@ D.autoComplete = function (el, options) {
             {
                 this.search();
             }
+        },
+
+        onBlur: function (e) {
+            var self = this;
+            setTimeout(function () {
+                self.hide();
+            }, 100);
         },
 
         clear: function () {
