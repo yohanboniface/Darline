@@ -30,19 +30,6 @@ D.autoComplete = function (el, options) {
             return this;
         },
 
-        /*
-         * Autocomplete inplace
-         */
-        inplace: function () {
-            if (!this.el) return this;
-            this.el.style.display = "none";
-
-        },
-
-        hidden: function () {
-
-        },
-
         createInput: function () {
             this.input = D.DOM.create('input', {
                 type: 'text',
