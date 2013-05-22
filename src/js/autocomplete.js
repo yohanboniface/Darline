@@ -169,6 +169,7 @@ D.autoComplete = function (el, options) {
         search: function() {
             var val = this.input.value;
             if (val.length < this.options.minChar) {
+                this.clear();
                 return;
             }
             if(!val) {
