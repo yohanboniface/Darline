@@ -6,7 +6,8 @@ D.autoComplete = function (el, options) {
             placeholder: "Start typing...",
             emptyMessage: "No result",
             allowFree: true,
-            minChar: 2
+            minChar: 2,
+            maxResults: 5
         },
 
         CACHE: '',
@@ -277,17 +278,19 @@ D.autoComplete = function (el, options) {
             close.innerHTML = "×";
             D.Event.on(close, 'click', function () {
                 this.selected_container.removeChild(result_el);
-                this.unselectMultiSelect(result);
+                this.unselect(result);
             }, this);
             this.hide();
         },
 
         _do_search: function (val) {
             var results = [],
-                self = this;
+                self = this,
+                count = 0;
             D.DOM.forEach(this.el, function (item, index) {
-                if (item.innerHTML.indexOf(val) !== -1 && !item.selected) {
+                if (item.innerHTML.indexOf(val) !== -1 && !item.selected && count < self.options.maxResults) {
                     results.push(self.optionToResult(item));
+                    count++;
                 }
             });
             return results;
