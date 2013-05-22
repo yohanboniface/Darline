@@ -113,6 +113,38 @@ D.DOM = {
         else {
             el.style.display = el.data.oldDisplay || displayValue || "block";
         }
+    },
+
+    insertAfter: function (target, el)
+    {
+        target.parentNode.insertBefore(el, target.nextSibling);
+        return el;
+    },
+
+    insertBefore: function (target, el)
+    {
+        target.parentNode.insertBefore(el, target);
+        return el;
+    },
+
+    getLeft: function (el) {
+        var tmp = el.offsetLeft;
+        el = el.offsetParent;
+        while(el) {
+            tmp += el.offsetLeft;
+            el = el.offsetParent;
+        }
+        return tmp;
+    },
+
+    getTop: function (el) {
+        var tmp = el.offsetTop;
+        el = el.offsetParent;
+        while(el) {
+            tmp += el.offsetTop;
+            el = el.offsetParent;
+        }
+        return tmp;
     }
 };
 
@@ -200,4 +232,18 @@ D.Xhr = {
                 D.Xhr.submit_form(form_id, options);
             });
     }
+};
+
+D.Keys = {
+    LEFT: 37,
+    UP: 38,
+    RIGHT: 39,
+    DOWN: 40,
+    TAB: 9,
+    RETURN: 13,
+    ESC: 27,
+    APPLE: 91,
+    SHIFT: 16,
+    ALT: 17,
+    CTRL: 18
 };
