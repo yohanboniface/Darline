@@ -132,6 +132,7 @@ D.autoComplete = function (el, options) {
         clear: function () {
             this.RESULTS = [];
             this.CURRENT = null;
+            this.CACHE = '';
             this.container.innerHTML = '';
         },
 
