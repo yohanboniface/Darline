@@ -187,7 +187,7 @@ D.autoComplete = function (el, options) {
                 this.CURRENT = result;
                 this.highlight();
             }, this);
-            D.Event.on(el, 'click', function (e) {
+            D.Event.on(el, 'mousedown', function (e) {
                 this.setChoice();
             }, this);
             return result;
