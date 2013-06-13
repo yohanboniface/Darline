@@ -148,11 +148,14 @@ D.DOM = {
     }
 };
 
-D.DOM.__defineGetter__("body", function () {
-    if (!D.DOM._body) {
-        D.DOM._body = document.querySelector('body');
+Object.defineProperty(D.DOM, "body", {
+    get: function () {
+        if (!D.DOM._body) {
+            D.DOM._body = document.querySelector('body');
+        }
+        return D.DOM._body;
     }
-    return D.DOM._body;
+
 });
 
 D.Event = {
