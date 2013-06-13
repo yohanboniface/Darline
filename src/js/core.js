@@ -148,15 +148,20 @@ D.DOM = {
     }
 };
 
-Object.defineProperty(D.DOM, "body", {
-    get: function () {
-        if (!D.DOM._body) {
-            D.DOM._body = document.querySelector('body');
+try {
+    Object.defineProperty(D.DOM, "body", {
+        get: function () {
+            if (!D.DOM._body) {
+                D.DOM._body = document.querySelector('body');
+            }
+            return D.DOM._body;
         }
-        return D.DOM._body;
-    }
 
-});
+    });
+}
+catch (e) {
+    D.DOM.body = null;
+}
 
 D.Event = {
     on: function (el, type, fn, thisobj) {
