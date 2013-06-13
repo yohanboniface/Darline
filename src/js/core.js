@@ -42,8 +42,16 @@ D.DOM = {
         return new RegExp(/#([\w\-_]+$)/).test(selector);
     },
 
+    isNode: function (el) {
+        return (!!Node && el instanceof Node);
+    },
+
+    isNodeList: function (el) {
+        return (!!NodeList && el instanceof NodeList);
+    },
+
     get: function (query, el) {
-        if (query instanceof Node || query instanceof NodeList) {
+        if (this.isNode(query) || this.isNodeList(query)) {
             return query;
         }
         if (typeof el === "undefined") {
@@ -166,7 +174,7 @@ catch (e) {
 D.Event = {
     on: function (el, type, fn, thisobj) {
         el = D.DOM.get(el);
-        if (el instanceof NodeList) {
+        if (D.DOM.isNodeList(el)) {
             return D.DOM.forEach(el, function (item) { D.Event.on(item, type, fn, thisobj); });
         }
         el.addEventListener(type, D.Util.bind(fn, thisobj || el));

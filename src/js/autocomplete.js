@@ -17,16 +17,21 @@ D.autoComplete = function (el, options) {
             this.el = D.DOM.get(el);
             this.options = L.Util.extend(this.options, options);
             var CURRENT = null;
-            this.__defineGetter__("CURRENT", function(){
-                return CURRENT;
-            });
-
-            this.__defineSetter__("CURRENT", function(index){
-                if (typeof index === "object") {
-                    index = this.resultToIndex(index);
-                }
-                CURRENT = index;
-            });
+            try {
+                Object.defineProperty(this, "CURRENT", {
+                    get: function () {
+                        return CURRENT;
+                    },
+                    set: function (index) {
+                        if (typeof index === "object") {
+                            index = this.resultToIndex(index);
+                        }
+                        CURRENT = index;
+                    }
+                });
+            } catch (e) {
+                // Hello IE8
+            }
             return this;
         },
 
