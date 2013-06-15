@@ -43,7 +43,7 @@ D.DOM = {
     },
 
     isNode: function (el) {
-        return (!!Node && el instanceof Node);
+        return (el.nodeType && el.nodeType === 1);
     },
 
     isNodeList: function (el) {
