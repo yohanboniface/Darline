@@ -88,3 +88,6 @@ input + .error {
     font-size: 11px;
     border-radius: 0 2px;
 }
+input[type="file"] + .error {
+    margin-top: 0;
+}
